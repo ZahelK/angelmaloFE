@@ -1,1 +1,7 @@
 @import "tailwindcss";
+@plugin "@midudev/tailwind-animations";
+@import '@fontsource/be-vietnam-pro';
+
+@theme {
+    --font-vietnam: 'Be Vietnam Pro', sans-serif;
+}
