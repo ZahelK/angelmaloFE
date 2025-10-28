@@ -2,6 +2,11 @@
 @plugin "@midudev/tailwind-animations";
 @import '@fontsource/be-vietnam-pro';
 
+
 @theme {
     --font-vietnam: 'Be Vietnam Pro', sans-serif;
+}
+
+html, body {
+  @apply  text-white font-vietnam bg-blue-950;
 }
