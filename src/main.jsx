@@ -13,7 +13,7 @@ createRoot(document.getElementById("root")).render(
             PROMOCION
           </label>
           <p className="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-600">
-            Registrate antes del 1 de novienbre para participar por una gif card
+            Registrate antes del 1 de noviembre para participar por una gif card
             de 50 luquitas
           </p>
         </div>

@@ -34,6 +34,8 @@ function App() {
     e.preventDefault();
     setErrors({}); // Limpiar errores previos
     setIsSubmitting(true);
+
+    const API_KEY = import.meta.env.VITE_API_KEY;
     
     try {
 
@@ -43,7 +45,12 @@ function App() {
 
       const res = await axios.post(
         "https://angelmalo-be.vercel.app/api/form",
-        validatedData
+        validatedData, { // <--- Objeto de configuración de Axios
+          headers: {
+            'Content-Type': 'application/json',
+            'X-API-Key': API_KEY, // <--- ENCABEZADO SECRETO
+          }
+        }
       );
 
       setShowSuccess(true);
