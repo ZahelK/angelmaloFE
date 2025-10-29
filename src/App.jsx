@@ -2,9 +2,9 @@ import { useState } from "react";
 import axios from "axios";
 import "@fontsource/be-vietnam-pro";
 import checkIcon from "./assets/check.svg";
+import alamedaLogo from "./assets/AlamedaLogo.png";
 
-import { formSchema } from './schema';
-
+import { formSchema } from "./schema";
 
 function App() {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -23,10 +23,10 @@ function App() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
     // Opcional: limpiar el error del campo al escribir
     if (errors[name]) {
-      setErrors(prev => ({ ...prev, [name]: '' }));
+      setErrors((prev) => ({ ...prev, [name]: "" }));
     }
   };
 
@@ -36,20 +36,21 @@ function App() {
     setIsSubmitting(true);
 
     const API_KEY = import.meta.env.VITE_API_KEY;
-    
-    try {
 
+    try {
       const validatedData = formSchema.parse(formData);
 
       setFormData(validatedData);
 
       const res = await axios.post(
         "https://angelmalo-be.vercel.app/api/form",
-        validatedData, { // <--- Objeto de configuración de Axios
+        validatedData,
+        {
+          // <--- Objeto de configuración de Axios
           headers: {
-            'Content-Type': 'application/json',
-            'X-API-Key': API_KEY, // <--- ENCABEZADO SECRETO
-          }
+            "Content-Type": "application/json",
+            "X-API-Key": API_KEY, // <--- ENCABEZADO SECRETO
+          },
         }
       );
 
@@ -83,7 +84,6 @@ function App() {
       } else {
         setShowFailed(true);
       }
-      
     } finally {
       setIsSubmitting(false);
     }
@@ -125,12 +125,14 @@ function App() {
             </button>
           </div>
         )}
-
-        <label className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-600 mt-10">
-          Alameda
+        <div>
+          <img src={alamedaLogo} className="w-60  h-55 mt-3"></img>
+        </div>
+        <label className="text-sm font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-600 ">
+          Botilleria
         </label>
         <label className="font-vietnam  font-semibold text-lg">
-          Botilleria
+          
         </label>
         <form
           className="flex flex-col justify-center w-100 p-2"
@@ -144,7 +146,7 @@ function App() {
             onChange={handleChange}
             className="bg-white/10 rounded-md p-2 mb-2 border-2 border-none"
           />
-          {errors.nombre && <p style={{ color: 'red' }}>{errors.nombre}</p>}
+          {errors.nombre && <p style={{ color: "red" }}>{errors.nombre}</p>}
 
           <label className="font-vietnam p-1">RUT:</label>
           <input
@@ -154,7 +156,7 @@ function App() {
             onChange={handleChange}
             className="bg-white/10 rounded-md p-2 mb-2 border-2 border-none"
           />
-          {errors.rut && <p style={{ color: 'red' }}>{errors.rut}</p>}
+          {errors.rut && <p style={{ color: "red" }}>{errors.rut}</p>}
 
           <label className="font-vietnam p-1">Correo Electrónico:</label>
           <input
@@ -164,7 +166,7 @@ function App() {
             onChange={handleChange}
             className="bg-white/10 rounded-md p-2 mb-2 border-2 border-none"
           />
-          {errors.correo && <p style={{ color: 'red' }}>{errors.correo}</p>}
+          {errors.correo && <p style={{ color: "red" }}>{errors.correo}</p>}
 
           <label className="font-vietnam p-1">Número:</label>
           <input
@@ -174,13 +176,13 @@ function App() {
             onChange={handleChange}
             className="bg-white/10 rounded-md p-2 mb-2 border-2 border-none"
           />
-          {errors.numero && <p style={{ color: 'red' }}>{errors.numero}</p>} 
+          {errors.numero && <p style={{ color: "red" }}>{errors.numero}</p>}
 
           <button
             type="submit"
-            className="px-6 py-2 mt-5 rounded-lg text-blue-950 font-semibold bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 shadow-md hover:scale-105 transition"
+            className="px-6 py-2 mt-5 rounded-lg text-blue-950 font-semibold bg-gradient-to-r from-yellow-500 via-yellow-500 to-yellow-600 shadow-md hover:scale-105 transition"
           >
-            {isSubmitting ? 'Enviando...' : 'Enviar'}
+            {isSubmitting ? "Enviando..." : "Enviar"}
           </button>
         </form>
       </div>
