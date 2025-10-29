@@ -6,7 +6,7 @@ import App from "./App.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <App />
-    <div className="flex flex-col justify-center p-4 font-normal text-blue-100">
+    <div className="flex flex-col justify-center p-4 font-normal text-blue-100 w-100 m-auto">
       <div className="bg-white/20 p-1 rounded-lg m-4 bg-gradient-to-br from-yellow-400 to-amber-600">
         <div className="p-2 bg-blue-950 rounded-sm">
           <label className="font-extrabold text-2xl text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 via-yellow-500 to-amber-600">
